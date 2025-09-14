@@ -16,9 +16,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('full_name');
             $table->string('postal_code');
-            $table->string('area');
+            $table->string('street_name');
+            $table->string('suburb');
             $table->string('city');
-            $table->string('state');
+            $table->string('country');
         });
     }
 

@@ -25,8 +25,11 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function ()
     Route::post('images/bulk', [ImageController::class, 'bulkStore']);
     Route::post('orders/bulk', [OrderController::class, 'bulkStore']);
 
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::apiResource('addresses', AddressController::class);
+    });
+
     $resources = [
-        'addresses' => AddressController::class,
         'categories' => CategoryController::class,
         'images' => ImageController::class,
         'orders' => OrderController::class,
@@ -43,6 +46,7 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function ()
         }
     });
 
+    // Route::post('roles/store', [RoleController::class, 'store']);
     // Create/Update Permissions
     Route::middleware(['auth:sanctum', 'role:admin,employee'])->group(function () use ($resources) {
         foreach ($resources as $uri => $controller) {

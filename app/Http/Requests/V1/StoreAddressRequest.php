@@ -25,9 +25,10 @@ class StoreAddressRequest extends FormRequest
         return [
             'full_name' => ['required', 'string' ,'max:255'],
             'postal_code' => ['required', 'string' ,'max:10'],
-            'area' => ['required', 'string' ,'max:255'],
+            'street_name' => ['required', 'string' ,'max:255'],
+            'suburb' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string' ,'max:255'],
-            'state' => ['required', 'string' ,'max:255'],
+            'country' => ['required', 'string' ,'max:255'],
             'user_id' => ['required', 'integer' ,'exists:users,id'],
         ];
     }
@@ -36,6 +37,7 @@ class StoreAddressRequest extends FormRequest
         $this->merge([
             'full_name' => $this->fullName,
             'postal_code' => $this->postalCode,
+            'street_name' => $this->streetName,
             'user_id' => $this->userId
         ]);
     }

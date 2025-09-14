@@ -25,9 +25,10 @@ class UpdateAddressRequest extends FormRequest
             return [
                 'full_name' => ['required', 'string' ,'max:255'],
                 'postal_code' => ['required', 'string' ,'max:10'],
-                'area' => ['required', 'string' ,'max:255'],
+                'street_name' => ['required', 'string' ,'max:255'],
+                'suburb' => ['required', 'string', 'max:255'],
                 'city' => ['required', 'string' ,'max:255'],
-                'state' => ['required', 'string' ,'max:255'],
+                'country' => ['required', 'string' ,'max:255'],
                 'user_id' => ['required', 'integer' ,'exists:users,id'],
             ];
         }
@@ -35,9 +36,10 @@ class UpdateAddressRequest extends FormRequest
             return [
                 'full_name' => ['sometimes', 'required', 'string' ,'max:255'],
                 'postal_code' => ['sometimes', 'required', 'string' ,'max:10'],
-                'area' => ['sometimes', 'required', 'string' ,'max:255'],
+                'street_name' => ['sometimes', 'required', 'string' ,'max:255'],
+                'suburb' => ['sometimes', 'required', 'string', 'max:255'],
                 'city' => ['sometimes', 'required', 'string' ,'max:255'],
-                'state' => ['sometimes', 'required', 'string' ,'max:255'],
+                'country' => ['sometimes', 'required', 'string' ,'max:255'],
                 'user_id' => ['sometimes', 'required', 'integer' ,'exists:users,id'],
             ];
         }
@@ -47,6 +49,7 @@ class UpdateAddressRequest extends FormRequest
         $this->merge([
             'full_name' => $this->fullName,
             'postal_code' => $this->postalCode,
+            'street_name' => $this->streetName,
             'user_id' => $this->userId
         ]);
     }

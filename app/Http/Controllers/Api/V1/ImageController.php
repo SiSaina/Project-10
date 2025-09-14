@@ -33,14 +33,31 @@ class ImageController extends Controller
     {
         Image::insert(collect($request->validated())->toArray());
     }
+    public function upload(Request $request){
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('practise-images', 'public');
+
+            return 'storage/' . $path;
+        }
+        return null;
+    }
     /**
      * Store a newly created resource in storage.     
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreImageRequest $request)
-    {
-        return new ImageResource(Image::create($request->all()));
+    {    
+        $image = Image::create([
+            'product_id' => $request->input('product_id'), // make sure key matches JSON
+            'url' => $request->input('url'),               // store file name
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Image record created successfully',
+            'data' => $image,
+        ]);
     }
 
     /**
@@ -67,4 +84,6 @@ class ImageController extends Controller
     {
         //
     }
+
+
 }

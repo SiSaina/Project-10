@@ -15,9 +15,10 @@ class Address extends Model
         'user_id',
         'full_name',
         'postal_code',
-        'area',
+        'street_name',
+        'suburb',
         'city',
-        'state'
+        'country'
     ];
 
     public function user()
