@@ -29,36 +29,37 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function ()
         Route::apiResource('addresses', AddressController::class);
     });
 
-    $resources = [
-        'categories' => CategoryController::class,
-        'images' => ImageController::class,
-        'orders' => OrderController::class,
-        'orderDetails' => OrderDetailController::class,
-        'products' => ProductController::class,
-        'users' => UserController::class,
-        'roles' => RoleController::class,
-    ];
-
     // Read Permissions
-    Route::middleware(['auth:sanctum', 'role:admin,employee,customer'])->group(function () use ($resources) {
-        foreach ($resources as $uri => $controller) {
-            Route::apiResource($uri, $controller)->only(['index', 'show']);
-        }
+    Route::middleware(['auth:sanctum', 'role:admin,employee,customer'])->group(function () {
+        Route::apiResource('categories', CategoryController::class)->only(['index', 'show']);
+        Route::apiResource('images', ImageController::class)->only(['index', 'show']);
+        Route::apiResource('orders', OrderController::class)->only(['index', 'show']);
+        Route::apiResource('orderDetails', OrderDetailController::class)->only(['index', 'show']);
+        Route::apiResource('products', ProductController::class)->only(['index', 'show']);
+        Route::apiResource('users', UserController::class)->only(['index', 'show']);
+        Route::apiResource('roles', RoleController::class)->only(['index', 'show']);
     });
 
-    // Route::post('roles/store', [RoleController::class, 'store']);
     // Create/Update Permissions
-    Route::middleware(['auth:sanctum', 'role:admin,employee'])->group(function () use ($resources) {
-        foreach ($resources as $uri => $controller) {
-            Route::apiResource($uri, $controller)->only(['store', 'update']);
-        }
+    Route::middleware(['auth:sanctum', 'role:admin,employee'])->group(function () {
+        Route::apiResource('categories', CategoryController::class)->only(['store', 'update']);
+        Route::apiResource('images', ImageController::class)->only(['store', 'update']);
+        Route::apiResource('orders', OrderController::class)->only(['store', 'update']);
+        Route::apiResource('orderDetails', OrderDetailController::class)->only(['store', 'update']);
+        Route::apiResource('products', ProductController::class)->only(['store', 'update']);
+        Route::apiResource('users', UserController::class)->only(['store', 'update']);
+        Route::apiResource('roles', RoleController::class)->only(['store', 'update']);
     });
 
     // Full Permissions (admin)
-    Route::middleware(['auth:sanctum', 'role:admin'])->group(function () use ($resources) {
-        foreach ($resources as $uri => $controller) {
-            Route::apiResource($uri, $controller)->only(['destroy']);
-        }
+    Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
+        Route::apiResource('categories', CategoryController::class)->only(['destroy']);
+        Route::apiResource('images', ImageController::class)->only(['destroy']);
+        Route::apiResource('orders', OrderController::class)->only(['destroy']);
+        Route::apiResource('orderDetails', OrderDetailController::class)->only(['destroy']);
+        Route::apiResource('products', ProductController::class)->only(['destroy']);
+        Route::apiResource('users', UserController::class)->only(['destroy']);
+        Route::apiResource('roles', RoleController::class)->only(['destroy']);
     });
 });
 
