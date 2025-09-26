@@ -30,7 +30,7 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function ()
     });
 
     // Read Permissions
-    Route::middleware(['auth:sanctum', 'role:admin,employee,customer'])->group(function () {
+    Route::middleware(['auth:sanctum', 'role:Admin,Employee,Customer'])->group(function () {
         Route::apiResource('categories', CategoryController::class)->only(['index', 'show']);
         Route::apiResource('images', ImageController::class)->only(['index', 'show']);
         Route::apiResource('orders', OrderController::class)->only(['index', 'show']);
@@ -41,7 +41,7 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function ()
     });
 
     // Create/Update Permissions
-    Route::middleware(['auth:sanctum', 'role:admin,employee'])->group(function () {
+    Route::middleware(['auth:sanctum', 'role:Admin,Employee'])->group(function () {
         Route::apiResource('categories', CategoryController::class)->only(['store', 'update']);
         Route::apiResource('images', ImageController::class)->only(['store', 'update']);
         Route::apiResource('orders', OrderController::class)->only(['store', 'update']);
@@ -52,7 +52,7 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function ()
     });
 
     // Full Permissions (admin)
-    Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
+    Route::middleware(['auth:sanctum', 'role:Admin'])->group(function () {
         Route::apiResource('categories', CategoryController::class)->only(['destroy']);
         Route::apiResource('images', ImageController::class)->only(['destroy']);
         Route::apiResource('orders', OrderController::class)->only(['destroy']);
