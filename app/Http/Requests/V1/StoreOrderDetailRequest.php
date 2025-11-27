@@ -26,8 +26,8 @@ class StoreOrderDetailRequest extends FormRequest
             'user_id' => ['required', 'integer' ,'exists:users,id'],
             'order_id' => ['required', 'integer' ,'exists:orders,id'],
             'address_id' => ['required', 'integer' ,'exists:addresses,id'],
-            'status' => ['required', 'integer' , Rule::in(['pending', 'paid', 'canceled'])],
-            'price' => ['required', 'numeric' ,'min:0'],
+            'status' => ['required', Rule::in(['pending', 'paid', 'canceled'])],
+            'date' => ['required', 'date'],
         ];
     }
     public function prepareForValidation()
