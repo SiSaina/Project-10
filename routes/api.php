@@ -33,13 +33,13 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function ()
     Route::middleware(['auth:sanctum', 'role:Admin,Employee,Customer'])->group(function () {
         Route::apiResource('categories', CategoryController::class)->only(['index', 'show', 'store', 'update']);
         Route::apiResource('images', ImageController::class)->only(['index', 'show', 'store', 'update']);
-        Route::apiResource('orders', OrderController::class)->only(['index', 'show', 'store', 'update']);
+
         Route::apiResource('orderDetails', OrderDetailController::class)->only(['index', 'show', 'store', 'update']);
 
         Route::apiResource('users', UserController::class)->only(['index', 'show', 'store', 'update']);
         Route::apiResource('roles', RoleController::class)->only(['index', 'show', 'store', 'update']);
 
-        
+        Route::apiResource('orders', OrderController::class)->only(['index', 'show', 'store', 'update']);
         Route::post('orders/bulk', [OrderController::class, 'bulkStore']);
     });
 

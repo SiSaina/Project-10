@@ -34,8 +34,17 @@ class OrderController extends Controller
     }
     public function bulkStore(BulkStoreOrderRequest $request)
     {
-        Order::insert(collect($request->validated())->toArray());
+        $createdOrders = [];
+        foreach ($request->validated() as $item) {
+            $createdOrders[] = Order::create($item);
+        }
+
+        return response()->json([
+            'message' => 'Orders created',
+            'orders' => $createdOrders
+        ], 201);
     }
+
     /**
      * Store a newly created resource in storage.     
      * @param  \Illuminate\Http\Request  $request
