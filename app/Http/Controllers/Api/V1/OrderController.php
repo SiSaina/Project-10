@@ -67,13 +67,18 @@ class OrderController extends Controller
         return new OrderResource($order->load('orderDetails'));
     }
 
+
+
+
+
+    
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateOrderRequest $request, Order $order)
     {
 
-        
+
         $order->update($request->validated());
         return new OrderResource($order);
     }
