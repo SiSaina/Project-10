@@ -44,10 +44,6 @@ class OrderController extends Controller
             'orders' => $createdOrders
         ], 201);
     }
-
-
-
-    
     /**
      * Store a newly created resource in storage.     
      * @param  \Illuminate\Http\Request  $request
