@@ -68,10 +68,6 @@ class OrderController extends Controller
     }
 
 
-
-
-
-    
     /**
      * Update the specified resource in storage.
      */
