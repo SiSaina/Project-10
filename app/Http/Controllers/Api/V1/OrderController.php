@@ -52,6 +52,8 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         return new OrderResource(Order::create($request->all()));
+
+        
     }
 
     /**
