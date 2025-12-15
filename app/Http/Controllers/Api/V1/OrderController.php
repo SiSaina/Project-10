@@ -68,7 +68,7 @@ class OrderController extends Controller
 
 
 
-        
+
         return new OrderResource($order->load('orderDetails'));
     }
 
@@ -78,8 +78,6 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderRequest $request, Order $order)
     {
-
-
         $order->update($request->validated());
         return new OrderResource($order);
     }
