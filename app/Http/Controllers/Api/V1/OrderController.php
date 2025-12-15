@@ -53,7 +53,7 @@ class OrderController extends Controller
     {
         return new OrderResource(Order::create($request->all()));
 
-        
+
     }
 
     /**
@@ -66,6 +66,9 @@ class OrderController extends Controller
             $order->loadMissing('orderDetails');
         }
 
+
+
+        
         return new OrderResource($order->load('orderDetails'));
     }
 
