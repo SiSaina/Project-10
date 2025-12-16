@@ -65,10 +65,6 @@ class OrderController extends Controller
         if($includeOrderDetails) {
             $order->loadMissing('orderDetails');
         }
-
-
-
-
         return new OrderResource($order->load('orderDetails'));
     }
 
