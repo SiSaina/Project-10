@@ -21,6 +21,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+
+
 Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function () {
     Route::post('images/bulk', [ImageController::class, 'bulkStore']);
     Route::post('orders/bulk', [OrderController::class, 'bulkStore']);
@@ -41,8 +43,6 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function ()
 
         Route::apiResource('orders', OrderController::class)->only(['index', 'show', 'store', 'update']);
         Route::post('orders/bulk', [OrderController::class, 'bulkStore']);
-
-        
     });
 
 
