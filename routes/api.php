@@ -42,9 +42,6 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function ()
         Route::apiResource('orders', OrderController::class)->only(['index', 'show', 'store', 'update']);
         Route::post('orders/bulk', [OrderController::class, 'bulkStore']);
     });
-
-
-    
     // // Create/Update Permissions
     // Route::middleware(['auth:sanctum', 'role:Admin,Employee'])->group(function () {
     //     Route::apiResource('categories', CategoryController::class)->only(['store', 'update']);
