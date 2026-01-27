@@ -23,6 +23,7 @@ class UserResource extends JsonResource
             'imageUrl' => $this->image_url,
             'roleId' => $this->role_id,
             'addresses' => AddressResource::collection($this->whenLoaded('addresses')),
+            'orders' => OrderResource::collection($this->whenLoaded('orders')),
         ];
     }
 }
