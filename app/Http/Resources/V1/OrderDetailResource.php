@@ -18,9 +18,9 @@ class OrderDetailResource extends JsonResource
             'id' => $this->id,
             'status' => $this->status,
             'date' => $this->date,
-            'orderId' => $this->order_id,
-            'userId' => $this->user_id,
-            'addressId' => $this->address_id
+            'orderId' => OrderResource::Collection($this->whenLoaded('order')),
+            'userId' => UserResource::Collection($this->whenLoaded('user')),
+            'addressId' => AddressResource::Collection($this->whenLoaded('address'))
         ];
     }
 }

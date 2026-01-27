@@ -47,6 +47,11 @@ class OrderDetailController extends Controller
         return new OrderDetailResource($orderDetail);
     }
 
+    public function showUserProduct(OrderDetail $orderDetail)
+    {
+        return new OrderDetailResource($orderDetail);
+    }
+
     /**
      * Update the specified resource in storage.
      */
