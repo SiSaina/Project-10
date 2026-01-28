@@ -47,9 +47,11 @@ class OrderDetailController extends Controller
         return new OrderDetailResource($orderDetail);
     }
 
-    public function showUserProduct(OrderDetail $orderDetail)
+    public function showUserProduct($userId)
     {
-        return new OrderDetailResource($orderDetail);
+        $include = ['order', 'user', 'address'];
+        $UserOrderDetail = OrderDetail::with($include)->where('user_id', $userId)->get();
+        return OrderDetailResource::collection($UserOrderDetail);
     }
 
     /**

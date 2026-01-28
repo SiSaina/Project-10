@@ -35,6 +35,7 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function ()
         Route::apiResource('images', ImageController::class)->only(['index', 'show', 'store', 'update']);
 
         Route::apiResource('orderDetails', OrderDetailController::class)->only(['index', 'show', 'store', 'update']);
+        Route::get('orderDetails/userProduct/{id}', [OrderDetailController::class, 'showUserProduct']);
 
         Route::apiResource('users', UserController::class)->only(['index', 'show', 'store', 'update']);
         Route::apiResource('roles', RoleController::class)->only(['index', 'show', 'store', 'update']);

@@ -20,7 +20,10 @@ class OrderDetailResource extends JsonResource
             'date' => $this->date,
             'orderId' => $this->order_id,
             'userId' => $this->user_id,
-            'addressId' => $this->address_id
+            'addressId' => $this->address_id,
+            'order' => new OrderResource($this->whenLoaded('order')),
+            'user' => new UserResource($this->whenLoaded('user')),
+            'address' => new AddressResource($this->whenLoaded('address'))
         ];
     }
 }
