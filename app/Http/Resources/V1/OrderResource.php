@@ -18,7 +18,8 @@ class OrderResource extends JsonResource
             'id' => $this->id,
             'productId' => $this->product_id,
             'quantity' => $this->quantity,
-            'orderDetails' => OrderDetailResource::collection($this->whenLoaded('orderDetails'))
+            'orderDetails' => OrderDetailResource::collection($this->whenLoaded('orderDetails')),
+            'product' => new ProductResource($this->whenLoaded('product'))
         ];
     }
 }
