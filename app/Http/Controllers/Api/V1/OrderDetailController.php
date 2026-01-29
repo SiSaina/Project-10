@@ -49,7 +49,7 @@ class OrderDetailController extends Controller
 
     public function showUserProduct($userId)
     {
-        $include = ['order', 'user', 'address'];
+        $include = ['order.product.images', 'user', 'address'];
         $UserOrderDetail = OrderDetail::with($include)->where('user_id', $userId)->get();
         return OrderDetailResource::collection($UserOrderDetail);
     }
