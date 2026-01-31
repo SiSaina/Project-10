@@ -52,6 +52,8 @@ class OrderDetailController extends Controller
         $include = ['order.product.images', 'user', 'address'];
         $UserOrderDetail = OrderDetail::with($include)->where('user_id', $userId)->get();
         return OrderDetailResource::collection($UserOrderDetail);
+
+        
     }
 
     /**
