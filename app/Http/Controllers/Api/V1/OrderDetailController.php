@@ -20,12 +20,12 @@ class OrderDetailController extends Controller
     {        
         $filter = new OrderDetailFilter();
         $filterItems = $filter->transform($request);
-
+        $include = ['order.product.images', 'user', 'address'];
         if(count($filterItems) === 0) {
-            return new OrderDetailCollection(OrderDetail::paginate());
+            return new OrderDetailCollection(OrderDetail::with($include)->paginate());
         }
         else {
-            return new OrderDetailCollection(OrderDetail::where($filterItems)->paginate());
+            return new OrderDetailCollection(OrderDetail::with($include)->where($filterItems)->paginate());
         }
     }
 
